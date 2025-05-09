@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ru-RU">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{page_title}}</title>
+    <meta name="description" content="{{ meta_descr_content }}">
+    <meta name="robots" content="follow, index, max-snippet:-1, max-image-preview:large" />
+    <meta name="google-site-verification" content="qXFYGyOWEYtUc-PkD8khL9oHTX1afDI3XlRmXLgiaww" />
+    <meta name="yandex-verification" content="56e9f3cad6a5283b" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- favicon
+		============================================ -->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='images/favicon.ico')}}" />
+    <!-- Google Fonts
+		============================================ -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;600&family=Open+Sans:ital,wght@1,300&display=swap" media="print" onload="this.onload=null;this.removeAttribute('media');" fetchpriority="high">
+    <!-- all css here -->
+    <!-- bootstrap 5 css -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css')}}" rel=stylesheet>
+    <!-- animate css -->
+    <link href="{{ url_for('static', filename='css/animate.css')}}" rel="stylesheet">
+    <!-- font-awesome css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- owl-carousel css -->
+    <link href="{{ url_for('static', filename='modules/owl-carousel/owl.carousel.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='modules/owl-carousel/owl.theme.default.min.css')}}" rel="stylesheet">
+    <!-- magnific-popup css -->
+    <link href="{{ url_for('static', filename='modules/magnific-popup/magnific-popup.css')}}" rel="stylesheet">
+    <!-- swiper css -->
+    <link href="{{ url_for('static', filename='modules/swiper/swiper.min.css')}}" rel="stylesheet">
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css')}}">
+    <!-- jQuery -->
+    <script src="{{ url_for('static', filename='js/plugins/jquery-3.6.0.min.js')}}"></script>
+        {% block input_mask %}
+        {% endblock input_mask %}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z7X7J7J8CL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-Z7X7J7J8CL');
+    </script>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="fredia-page-loading" class="fredia-pageloading">
+        <div class="fredia-pageloading-inner">
+            <a class="fredia-pageloading" href="{{ url_for('main_pages.index')}}"> <img src="{{ url_for('static', filename='images/logo/logo-dark.webp')}}" alt=""> </a>
+        </div>
+    </div>
+    <!-- Header -->
+    <header>
+        <div class="fredia-header-navbar">
+            <div class="container fredia-navbar-container">
+                <div class="fredia-navigation-wrap fredia-start-header start-style">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <nav class="navbar navbar-expand-md navbar-light">
+                                    <!-- Logo -->
+                                    <a class="navbar-brand" href="{{ url_for('main_pages.index')}}"> <img src="{{ url_for('static', filename='images/logo/logo-light.webp')}}" alt=""> </a>
+                                    <!-- Menu -->
+                                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button>
+                                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                        <ul class="navbar-nav ms-auto py-4 py-md-0">
+                                            <li class="nav-item px-4 px-md-0 ms-0 ms-md-4 active"> <a class="nav-link" href="{{ url_for('main_pages.index')}}">Главная</a></li>
+                                            <li class="nav-item px-4 px-md-0 ms-0 ms-md-4"> <a class="nav-link" href="{{ url_for('main_pages.about')}}">Обо мне</a></li>
+                                            <li class="nav-item px-4 px-md-0 ms-0 ms-md-4"> <a class="nav-link" href="{{ url_for('main_pages.portfolio')}}">Портфолио</a></li>
+                                            <li class="nav-item px-4 px-md-0 ms-0 ms-md-4"> <a class="nav-link" href="{{ url_for('main_pages.price_page')}}">Цены</a></li>
+                                            <li class="nav-item px-4 px-md-0 ms-0 ms-md-4"> <a class="nav-link" href="{{ url_for('blog.blog_one')}}">Блог</a></li>
+                                            <li class="nav-item px-4 px-md-0 ms-0 ms-md-4"> <a class="nav-link" href="{{ url_for('main_pages.contact_page')}}">Контакты</a> </li>
+                                        </ul>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+        {% block content %}
+
+        {% endblock content %}
+
+    <!-- Footer  -->
+    <section class="footer">
+        <div class="container">
+            <div class="row">
+                <!-- Footer bottom -->
+                <div class="offset-md-3 col-md-6 offset-md-3">
+                    <!-- Footer logo -->
+                    <a href="#"><h3 class="site-title">Елена Долгорукая</h3></a>
+                    <h4 class="site-title-tagline">визажист&стилист</h4>
+                    <!-- Quick icons -->
+                    <div class="quick-links">
+                        <ul class="links">
+                            <li><a href="{{ url_for('main_pages.index')}}">Главная</a>&#124;</li>
+                            <li><a href="{{ url_for('main_pages.about')}}">Обо мне</a>&#124;</li>
+                            <li><a href="{{ url_for('main_pages.portfolio')}}">Портфолио</a>&#124;</li>
+                            <li><a href="{{ url_for('main_pages.price_page')}}">Цены</a>&#124;</li>
+                            <li><a href="{{ url_for('blog.blog_one')}}">Блог</a>&#124;</li>
+                            <li><a href="{{ url_for('main_pages.contact_page')}}">Контакты</a></li>
+                        </ul>
+                    </div>
+                    <!-- End quick icons -->
+                    <!-- Start social icons -->
+                    <div class="social-links">
+                        <ul>
+                            <li><a href="tel:+375259973106" target="_blank"><i class="fa-solid fa-mobile-screen"></i></a></li>
+                            <li><a href="https://www.instagram.com/dolgorukaya_makeup" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                            <li><a href="https://t.me/Elena_Dolgorukaya" target="_blank"><i class="fab fa-telegram"></i></a></li>
+                            <li><a href="viber://chat?number=%2B375291527304" target="_blank"><i class="fab fa-viber"></i></a></li>
+                        </ul>
+                    </div>
+                    <!-- End social icons -->
+                    <div class="btn-cont">
+                        <a href="{{ url_for('main_pages.contact_page')}}"><span>Заказать онлайн!</span></a>
+                    </div>
+                </div>
+                <!-- End footer bottom -->
+            </div>
+        </div>
+    </section>
+    <!-- Copyright -->
+    <div class="copyright">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 align-self-center">
+                    <p class="copyright-text">
+                    &copy; Copyright <span id="date">2024</span> <a href="#">dolgorukaya&makeup</a> All Rights Reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End footer  -->
+    <!-- toTop -->
+    <a href="#" class="totop">TOP</a>
+    {% block java_scripts %}
+    {% endblock java_scripts %}
+    <!-- all js here -->
+    <!-- bootstrap js -->
+    <script src="{{ url_for('static', filename='js/plugins/bootstrap.bundle.min.js') }}" defer></script>
+    <!-- imagesloaded js -->
+    <script src="{{ url_for('static', filename='js/plugins/imagesloaded.pkgd.min.js')}}"></script>
+    <!-- jquery.isotope js -->
+    <script src="{{ url_for('static', filename='js/plugins/jquery.isotope.v3.0.2.js')}}"></script>
+    <!-- modernizr js -->
+    <script src="{{ url_for('static', filename='js/plugins/modernizr-2.6.2.min.js')}}"></script>
+    <!-- jquery.waypoints js -->
+    <script src="{{ url_for('static', filename='js/plugins/jquery.waypoints.min.js')}}"></script>
+    <!-- owl.carousel js -->
+    <script src="{{ url_for('static', filename='modules/owl-carousel/owl.carousel.min.js')}}"></script>
+    <!-- swiper js -->
+    <script src="{{ url_for('static', filename='modules/swiper/swiper.min.js')}}"></script>
+    <!-- jquery.magnific-popup js -->
+    <script src="{{ url_for('static', filename='modules/magnific-popup/jquery.magnific-popup.js')}}"></script>
+    <!-- masonry.pkgd js -->
+    <script src="{{ url_for('static', filename='modules/masonry/masonry.pkgd.min.js')}}"></script>
+    <!-- main js -->
+    <script src="{{ url_for('static', filename='js/script.js')}}" defer></script>
+</body>
+</html>
