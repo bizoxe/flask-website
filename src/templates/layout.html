@@ -49,7 +49,7 @@
     <!-- Preloader -->
     <div id="fredia-page-loading" class="fredia-pageloading">
         <div class="fredia-pageloading-inner">
-            <a class="fredia-pageloading" href="{{ url_for('main_pages.index')}}"> <img src="{{ url_for('static', filename='images/logo/logo-dark.webp')}}" alt=""> </a>
+            <a class="fredia-pageloading" href="{{ url_for('base.index')}}"> <img src="{{ url_for('static', filename='images/logo/logo-dark.webp')}}" alt=""> </a>
         </div>
     </div>
     <!-- Header -->
@@ -62,17 +62,17 @@
                             <div class="col-md-12">
                                 <nav class="navbar navbar-expand-md navbar-light">
                                     <!-- Logo -->
-                                    <a class="navbar-brand" href="{{ url_for('main_pages.index')}}"> <img src="{{ url_for('static', filename='images/logo/logo-light.webp')}}" alt=""> </a>
+                                    <a class="navbar-brand" href="{{ url_for('base.index')}}"> <img src="{{ url_for('static', filename='images/logo/logo-light.webp')}}" alt=""> </a>
                                     <!-- Menu -->
                                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span></button>
                                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                                         <ul class="navbar-nav ms-auto py-4 py-md-0">
-                                            <li class="nav-item px-4 px-md-0 ms-0 ms-md-4 active"> <a class="nav-link" href="{{ url_for('main_pages.index')}}">Главная</a></li>
-                                            <li class="nav-item px-4 px-md-0 ms-0 ms-md-4"> <a class="nav-link" href="{{ url_for('main_pages.about')}}">Обо мне</a></li>
-                                            <li class="nav-item px-4 px-md-0 ms-0 ms-md-4"> <a class="nav-link" href="{{ url_for('main_pages.portfolio')}}">Портфолио</a></li>
-                                            <li class="nav-item px-4 px-md-0 ms-0 ms-md-4"> <a class="nav-link" href="{{ url_for('main_pages.price_page')}}">Цены</a></li>
+                                            <li class="nav-item px-4 px-md-0 ms-0 ms-md-4 active"> <a class="nav-link" href="{{ url_for('base.index')}}">Главная</a></li>
+                                            <li class="nav-item px-4 px-md-0 ms-0 ms-md-4"> <a class="nav-link" href="{{ url_for('base.about')}}">Обо мне</a></li>
+                                            <li class="nav-item px-4 px-md-0 ms-0 ms-md-4"> <a class="nav-link" href="{{ url_for('base.portfolio')}}">Портфолио</a></li>
+                                            <li class="nav-item px-4 px-md-0 ms-0 ms-md-4"> <a class="nav-link" href="{{ url_for('base.price_page')}}">Цены</a></li>
                                             <li class="nav-item px-4 px-md-0 ms-0 ms-md-4"> <a class="nav-link" href="{{ url_for('blog.blog_one')}}">Блог</a></li>
-                                            <li class="nav-item px-4 px-md-0 ms-0 ms-md-4"> <a class="nav-link" href="{{ url_for('main_pages.contact_page')}}">Контакты</a> </li>
+                                            <li class="nav-item px-4 px-md-0 ms-0 ms-md-4"> <a class="nav-link" href="{{ url_for('base.contact_page')}}">Контакты</a> </li>
                                         </ul>
                                     </div>
                                 </nav>
@@ -100,12 +100,12 @@
                     <!-- Quick icons -->
                     <div class="quick-links">
                         <ul class="links">
-                            <li><a href="{{ url_for('main_pages.index')}}">Главная</a>&#124;</li>
-                            <li><a href="{{ url_for('main_pages.about')}}">Обо мне</a>&#124;</li>
-                            <li><a href="{{ url_for('main_pages.portfolio')}}">Портфолио</a>&#124;</li>
-                            <li><a href="{{ url_for('main_pages.price_page')}}">Цены</a>&#124;</li>
+                            <li><a href="{{ url_for('base.index')}}">Главная</a>&#124;</li>
+                            <li><a href="{{ url_for('base.about')}}">Обо мне</a>&#124;</li>
+                            <li><a href="{{ url_for('base.portfolio')}}">Портфолио</a>&#124;</li>
+                            <li><a href="{{ url_for('base.price_page')}}">Цены</a>&#124;</li>
                             <li><a href="{{ url_for('blog.blog_one')}}">Блог</a>&#124;</li>
-                            <li><a href="{{ url_for('main_pages.contact_page')}}">Контакты</a></li>
+                            <li><a href="{{ url_for('base.contact_page')}}">Контакты</a></li>
                         </ul>
                     </div>
                     <!-- End quick icons -->
@@ -120,7 +120,7 @@
                     </div>
                     <!-- End social icons -->
                     <div class="btn-cont">
-                        <a href="{{ url_for('main_pages.contact_page')}}"><span>Заказать онлайн!</span></a>
+                        <a href="{{ url_for('base.contact_page')}}"><span>Заказать онлайн!</span></a>
                     </div>
                 </div>
                 <!-- End footer bottom -->
@@ -133,7 +133,7 @@
             <div class="row">
                 <div class="col-md-6 align-self-center">
                     <p class="copyright-text">
-                    &copy; Copyright <span id="date">2024</span> <a href="#">dolgorukaya&makeup</a> All Rights Reserved.
+                    &copy; Copyright <span id="date">2025</span> <a href="#">dolgorukaya&makeup</a> All Rights Reserved.
                     </p>
                 </div>
             </div>
