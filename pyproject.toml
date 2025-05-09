@@ -1,0 +1,19 @@
+[project]
+name = "flask-makeup-artist-website"
+version = "0.1.0"
+description = "A makeup artist's website created with a flask"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "dotenv>=0.9.9",
+    "flask>=3.1.0",
+    "flask-wtf>=1.2.2",
+    "gunicorn>=23.0.0",
+    "pluggy>=1.5.0",
+    "wtforms>=3.2.1",
+]
+
+[dependency-groups]
+dev = [
+    "black>=25.1.0",
+]
