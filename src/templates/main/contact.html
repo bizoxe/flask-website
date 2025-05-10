@@ -1,0 +1,169 @@
+    {% extends 'layout.html' %}
+
+    <!-- Input Mask for phone number -->
+    {% block input_mask %}
+    <script src="{{ url_for('static', filename='js/plugins/jquery.inputmask.min.js')}}"></script>
+    {% endblock input_mask %}
+
+    {% block content %}
+    <!-- Banner Title -->
+    <div class="ready banner-padding bg-img bg-fixed valign" data-background="{{ url_for('static', filename='images/slider/main-banner.webp')}}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-end">
+                        <div class="title mt-60 animate-box" data-animate-effect="fadeInUp">
+                            <h1 class="banner-title">Контакты</h1>
+                            <h6>оставить заявку</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact Info -->
+    <div class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 animate-box" data-animate-effect="fadeInUp">
+                    <span>информация</span>
+                    <h2>для связи со мной</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row mb-60">
+                        <div class="col-md-2 animate-box" data-animate-effect="fadeInUp"> <span class="line-one"></span></div>
+                        <div class="col-md-4 mb-30 animate-box" data-animate-effect="fadeInUp">
+                            <p>Связаться со мной вы можете любым удобным для Вас способом:</p>
+                            <ul>
+                                <li><i class="ti-pencil"></i> оставить онлайн-заявку на сайте,</li>
+                                <li><i class="ti-pencil"></i> написать в телеграм,</li>
+                                <li><i class="ti-pencil"></i> написать в вайбер,</li>
+                                <li><i class="ti-pencil"></i> позвонить.</li>
+                            </ul>
+                            <p><i><b>С уважением Елена Долгорукая.</b></i></p>
+                            <p><b>Телефон : </b><a href="tel:+375259973106" target="_blank">+375 (25) 997-31-06</a></p>
+                            <p><b>Оказываю услуги визажиста в городе Минск.</b></p>
+                        </div>
+                        <div class="col-md-5 offset-md-1 animate-box" data-animate-effect="fadeInUp">
+                            <h3>оставить заявку</h3>
+                            <!-- Order Form -->
+                            <form id="form" method="post" class="contact__form" novalidate>
+                                            {{ form.csrf_token }}
+                                <div id="csrf_token-error" class="invalid-feedback d-block"></div>
+                                    <!-- Form Elements -->
+                                    <div class="row">
+                                        <div class="col-md-6 form-group">
+                                            {{ form.name() }}
+                                        <div id="name-error" class="invalid-feedback d-block"></div>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            {{ form.phone(id="tel") }}
+                                        <div id="phone-error" class="invalid-feedback d-block"></div>
+                                        </div>
+                                        <div class="col-md-8 form-group">
+                                            {{ form.services() }}
+                                        <div id="services-error" class="invalid-feedback d-block"></div>
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            {{ form.date.label() }}
+                                            {{ form.date() }}
+                                        </div>
+                                        <div class="col-md-6 form-group">
+                                            {{ form.time.label() }}
+                                            {{ form.time() }}
+                                        </div>
+                                        <div class="col-md-10 form-group">
+                                            {{ form.message() }}
+                                        </div>
+                                        <div class="col-md-12">
+                                            <input name="submit" type="submit"  value="Отправить">
+                                        </div>
+                                    </div>
+                            </form>
+                            <!-- Success Message -->
+                            {% include 'includes/_messages.html' %}
+                            <!-- Success Message end-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        {% block java_scripts %}
+        <!-- JS for Phone Mask Input -->
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#tel").inputmask("+375(99)-999-99-99");
+            });
+        </script>
+        <!-- JS for Order Form -->
+        <script>
+            const form = document.getElementById('form');
+            const successMessage = document.getElementById('success-message');
+            const date = document.getElementById('date');
+            const time = document.getElementById('time');
+            const message = document.getElementById('message');
+            const fields = {
+                csrf_token: {
+                    input: document.getElementById('csrf_token'),
+                    error: document.getElementById('csrf_token-error')
+                },
+                name: {
+                    input: document.getElementById('name'),
+                    error: document.getElementById('name-error')
+                },
+                phone: {
+                    input: document.getElementById('tel'),
+                    error: document.getElementById('phone-error')
+                },
+                services: {
+                    input: document.getElementById('services'),
+                    error: document.getElementById('services-error')
+                }
+            }
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const response = await fetch('{{ url_for("base.contact_page")}}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        csrf_token: fields.csrf_token.input.value,
+                        name: fields.name.input.value,
+                        phone: fields.phone.input.value,
+                        services: fields.services.input.value,
+                        date: date.value,
+                        time: time.value,
+                        message: message.value
+                    })
+                });
+                if (response.ok) {
+                    form.style.display = 'none';
+                    document.querySelectorAll('.msg-toast').forEach((el) => {
+                        const toast = new bootstrap.Toast(el)
+                        toast.show()
+                    })
+                }
+                else if (response.status === 500) {
+                    document.querySelectorAll('.msg-toast1').forEach((el) => {
+                        const toast = new bootstrap.Toast(el)
+                        toast.show()
+                        })
+                }
+                else {
+                    const errors = await response.json();
+                    Object.keys(errors).forEach((key) => {
+                        fields[key].input.classList.add('is-invalid');
+                        fields[key].error.innerHTML = errors[key][0];
+                    });
+                }
+            });
+        </script>
+        <!-- JS for Order Form end-->
+        {% endblock java_scripts %}
+
+    {% endblock content %}
