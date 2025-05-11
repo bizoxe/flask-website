@@ -1,0 +1,23 @@
+services:
+
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/app/Dockerfile
+    container_name: flask-webapp
+    restart: unless-stopped
+    expose:
+      - 8000
+
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+    container_name: flask-nginx
+    restart: unless-stopped
+    environment:
+      - API_URL=8000
+    ports:
+      - ${URL_PORT:-8000}:80
+    depends_on:
+      - app
