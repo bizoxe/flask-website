@@ -8,6 +8,7 @@ from flask import (
 )
 
 from src.settings import ProdConfig
+from src.utils.log import custom_log
 
 
 def create_app(config_object=ProdConfig) -> Flask:
@@ -28,6 +29,7 @@ def create_app(config_object=ProdConfig) -> Flask:
     app.register_blueprint(blueprint=bp_blog)
 
     register_error_handlers(app)
+    custom_log(app)
 
     return app
 
