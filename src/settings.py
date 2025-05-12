@@ -16,25 +16,29 @@ class Config:
     """
 
     SECRET_KEY = os.getenv("SECRET_KEY", "very-secret-key")
+    BASE_URL = os.getenv("BASE_URL", "http://localhost:8000")
 
     SMTP_SERVER_NAME = os.getenv("SMTP_SERVER_NAME", "smtp.gmail.com")
     SMTP_PORT = int(os.getenv("SMTP_PORT", 587))
-    SMTP_USER_PASSWORD = os.getenv("SMTP_USER_PASSWORD")
-    SMTP_USER_LOGIN = os.getenv("SMTP_USER_LOGIN")
+    SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
     MAIL_SENDER = os.getenv("MAIL_SENDER")
     MAIL_RECIPIENT = os.getenv("MAIL_RECIPIENT")
     MAIL_SUBJECT = os.getenv("MAIL_SUBJECT", "Новый клиент!")
 
 
 class ProdConfig(Config):
-    """Production configuration."""
+    """
+    Production configuration.
+    """
 
     ENV = "production"
     DEBUG = False
 
 
 class DevConfig(Config):
-    """Development configuration."""
+    """
+    Development configuration.
+    """
 
     ENV = "development"
     DEBUG = True
