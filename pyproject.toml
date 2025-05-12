@@ -10,6 +10,8 @@ dependencies = [
     "flask-wtf>=1.2.2",
     "gevent>=25.4.2",
     "gunicorn>=23.0.0",
+    "pytest>=8.3.5",
+    "pytest-mock>=3.14.0",
     "wtforms>=3.2.1",
 ]
 
