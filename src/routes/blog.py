@@ -1,3 +1,7 @@
+"""
+Blog pages.
+"""
+
 from flask import render_template
 
 from src.routes import bp_blog

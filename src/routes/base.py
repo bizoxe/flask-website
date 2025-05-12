@@ -2,8 +2,13 @@
 Main pages of the site.
 """
 
+import json
+from pathlib import Path
+
 from flask import (
+    current_app,
     jsonify,
+    make_response,
     render_template,
     request,
 )
@@ -11,6 +16,44 @@ from flask import (
 from src.orders.forms import OrderForm
 from src.orders.mailing import send_email
 from src.routes import bp_base
+
+
+@bp_base.get("/sitemap.xml")
+def sitemap_xml():
+    """
+    Generates sitemap.xml. Creates a list of page URLs and their modification dates.
+    """
+    root_dir = Path(__file__).absolute().parent.parent.parent
+    file_path = root_dir / "pages_modified.json"
+    base_url = current_app.config["BASE_URL"]
+    with open(file_path, "r") as file:
+        pages_modified = json.load(file)
+    try:
+        pages = {}
+        for rule in current_app.url_map.iter_rules():
+            if str(rule) == "/sitemap.xml" or str(rule) == "/robots.txt":
+                continue
+            if "GET" in rule.methods and len(rule.arguments) == 0:
+                if str(rule) in pages_modified:
+                    pages[f"{base_url}{str(rule.rule)}"] = pages_modified[f"{rule}"]
+                else:
+                    pages[f"{base_url}{str(rule.rule)}"] = pages_modified["last_modified"]
+        sitemap = render_template("sitemap.xml", pages=pages)
+        response = make_response(sitemap)
+        response.headers["Content-Type"] = "application/xml"
+        response.mimetype = "application/xml"
+        return response
+    except Exception as e:
+        return str(e)
+
+
+@bp_base.get("/robots.txt")
+def robots_txt():
+    rb_txt = render_template("robots.txt")
+    response = make_response(rb_txt)
+    response.headers["Content-Type"] = "text/plain; charset=utf-8"
+    response.mimetype = "text/plain"
+    return response
 
 
 @bp_base.get("/")
